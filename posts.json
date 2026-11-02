@@ -1,6 +1,28 @@
 {
-  "updated": 1793648869,
+  "updated": 1793649785,
   "posts": [
+    {
+      "id": "8227466685:8",
+      "chat_id": 8227466685,
+      "message_id": 8,
+      "date": 1793649783,
+      "edited": null,
+      "from": "Elias",
+      "html": "<p>Stayed tuned for live election updates from ChicoSol<br>-Elias S. Myers</p>",
+      "photos": [],
+      "media_group_id": null
+    },
+    {
+      "id": "8227466685:7",
+      "chat_id": 8227466685,
+      "message_id": 7,
+      "date": 1793649224,
+      "edited": null,
+      "from": "Elias",
+      "html": "<p>Stayed tuned for live election updates from ChicoSol<br>-Elias S. Myers</p>",
+      "photos": [],
+      "media_group_id": null
+    },
     {
       "id": "8227466685:6",
       "chat_id": 8227466685,
