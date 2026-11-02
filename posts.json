@@ -1,58 +1,14 @@
 {
-  "updated": 1793649785,
+  "updated": 1793650001,
   "posts": [
     {
-      "id": "8227466685:8",
+      "id": "8227466685:14",
       "chat_id": 8227466685,
-      "message_id": 8,
-      "date": 1793649783,
+      "message_id": 14,
+      "date": 1793649978,
       "edited": null,
       "from": "Elias",
-      "html": "<p>Stayed tuned for live election updates from ChicoSol<br>-Elias S. Myers</p>",
-      "photos": [],
-      "media_group_id": null
-    },
-    {
-      "id": "8227466685:7",
-      "chat_id": 8227466685,
-      "message_id": 7,
-      "date": 1793649224,
-      "edited": null,
-      "from": "Elias",
-      "html": "<p>Stayed tuned for live election updates from ChicoSol<br>-Elias S. Myers</p>",
-      "photos": [],
-      "media_group_id": null
-    },
-    {
-      "id": "8227466685:6",
-      "chat_id": 8227466685,
-      "message_id": 6,
-      "date": 1793648851,
-      "edited": null,
-      "from": "Elias",
-      "html": "<p>Hey testing testing</p>",
-      "photos": [],
-      "media_group_id": null
-    },
-    {
-      "id": "8227466685:5",
-      "chat_id": 8227466685,
-      "message_id": 5,
-      "date": 1793648678,
-      "edited": null,
-      "from": "Elias",
-      "html": "<p>Hey is this live?</p>",
-      "photos": [],
-      "media_group_id": null
-    },
-    {
-      "id": "8227466685:4",
-      "chat_id": 8227466685,
-      "message_id": 4,
-      "date": 1793646899,
-      "edited": null,
-      "from": "Elias",
-      "html": "<p>Hey It’s Elias</p>",
+      "html": "<p>Stayed tuned for live election updates from ChicoSol.<br>- Elias S. Myers</p>",
       "photos": [],
       "media_group_id": null
     }
