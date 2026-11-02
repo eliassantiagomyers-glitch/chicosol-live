@@ -43,18 +43,8 @@ jobs:
           git config user.email "live-feed-bot@users.noreply.github.com"
           git add -A -- posts.json state.json
           if [ -d media ]; then git add -A -- media; fi
-          if ! git diff --cached --quiet; then
-            git commit -m "Live feed update $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+            exit 0
           fi
-
-      - name: Package site
-        if: steps.poll.outputs.changed == 'true' || github.event_name != 'schedule'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-      - name: Deploy to GitHub Pages
-        if: steps.poll.outputs.changed == 'true' || github.event_name != 'schedule'
-        id: deploy
-        uses: actions/deploy-pages@v4
+          git commit -m "Live feed update $(date -u
