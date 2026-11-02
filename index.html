@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChicoSol live updates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rule:#cfc9c3;
+    --ink:#1b1b1b;
+    --muted:#6b6b6b;
+    --link:#9c3a2e;
+    --serif:"Merriweather",Georgia,"Times New Roman",serif;   /* change here if the site uses a different body font */
+    --sans:"Oswald","Arial Narrow",sans-serif;
+  }
+  html,body{margin:0;padding:0;background:transparent}
+  body{font-family:var(--serif);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .live{border-top:3px solid var(--rule);padding-top:14px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+  .updated{font-family:var(--sans);font-weight:500;font-size:15px;letter-spacing:.03em;text-transform:uppercase;margin:0}
+  .nav{display:flex;align-items:center;gap:6px;font-family:var(--sans)}
+  .count{font-size:13px;color:var(--muted);letter-spacing:.03em;min-width:3.5em;text-align:center}
+  .nav button{appearance:none;background:#fff;border:1px solid var(--rule);color:var(--ink);
+    width:30px;height:30px;border-radius:3px;font:20px/1 var(--sans);cursor:pointer;padding:0 0 2px}
+  .nav button:hover:not(:disabled){background:#f3f0ee}
+  .nav button:disabled{opacity:.35;cursor:default}
+  .post{font-size:17px;line-height:1.65}
+  .post p{margin:0 0 1em}
+  .post p:last-child{margin-bottom:0}
+  .post a{color:var(--link);text-decoration:none}
+  .post a:hover{text-decoration:underline}
+  .post img{display:block;width:100%;height:auto;margin:0 0 1em}
+  .post blockquote{margin:0 0 1em;padding-left:14px;border-left:3px solid var(--rule);color:#333}
+  .post code,.post pre{font-size:.9em}
+  .empty{color:var(--muted);font-style:italic}
+  @media (max-width:480px){.post{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="live" id="live">
+  <div class="bar">
+    <p class="updated" id="updated">Updated: —</p>
+    <div class="nav" aria-label="Browse updates">
+      <button id="older" aria-label="Older update" disabled>&#8249;</button>
+      <span class="count" id="count"></span>
+      <button id="newer" aria-label="Newer update" disabled>&#8250;</button>
+    </div>
+  </div>
+  <div class="post" id="post"></div>
+</div>
+<script>
+(function(){
+  var POSTS_URL='posts.json', REFRESH_MS=60000, TZ='America/Los_Angeles';
+  var posts=[], index=0, currentId=null;
+  var $=function(id){return document.getElementById(id)};
+  var elUpdated=$('updated'),elPost=$('post'),elCount=$('count'),elLive=$('live'),
+      btnOlder=$('older'),btnNewer=$('newer');
+
+  function fmtTime(unix){
+    return new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:TZ}).format(new Date(unix*1000));
+  }
+  function sendHeight(){
+    if(window.parent===window)return;
+    var h=Math.ceil(elLive.getBoundingClientRect().height);
+    window.parent.postMessage({type:'chicosol-live-height',height:h},'*');
+  }
+  function render(){
+    if(!posts.length){
+      elUpdated.textContent='Updated: —';
+      elPost.innerHTML='<p class="empty">Live updates will appear here.</p>';
+      elCount.textContent=''; btnOlder.disabled=btnNewer.disabled=true;
+      sendHeight(); return;
+    }
+    index=Math.max(0,Math.min(index,posts.length-1));
+    var p=posts[index]; currentId=p.id;
+    elUpdated.textContent='Updated: '+fmtTime(p.date);
+    var h='';
+    (p.photos||[]).forEach(function(src){h+='<img src="'+src+'" alt="">'});
+    elPost.innerHTML=h+(p.html||'');
+    elCount.textContent=(index+1)+' / '+posts.length;
+    btnNewer.disabled=index===0;
+    btnOlder.disabled=index>=posts.length-1;
+    Array.prototype.forEach.call(elPost.querySelectorAll('a'),function(a){a.target='_blank';a.rel='noopener'});
+    Array.prototype.forEach.call(elPost.querySelectorAll('img'),function(img){img.addEventListener('load',sendHeight)});
+    sendHeight();
+  }
+  function load(){
+    fetch(POSTS_URL+'?t='+Date.now(),{cache:'no-store'})
+      .then(function(r){return r.json()})
+      .then(function(data){
+        var fresh=data.posts||[];
+        if(currentId&&index>0){            // reader is browsing: stay on the same post
+          var i=fresh.findIndex(function(p){return p.id===currentId});
+          index=i>=0?i:0;
+        } else index=0;                    // reader is on the newest: show new arrivals
+        posts=fresh; render();
+      })
+      .catch(function(e){console.error('live feed:',e); if(!posts.length)render();});
+  }
+  btnOlder.onclick=function(){index++;render()};
+  btnNewer.onclick=function(){index--;render()};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft'&&!btnOlder.disabled)btnOlder.click();
+    if(e.key==='ArrowRight'&&!btnNewer.disabled)btnNewer.click();
+  });
+  if('ResizeObserver' in window) new ResizeObserver(sendHeight).observe(elLive);
+  window.addEventListener('load',sendHeight);
+  if(document.fonts) document.fonts.ready.then(sendHeight);
+  load(); setInterval(load,REFRESH_MS);
+})();
+</script>
+</body>
+</html>
