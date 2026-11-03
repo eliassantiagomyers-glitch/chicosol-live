@@ -1,6 +1,17 @@
 {
-  "updated": 1793728702,
+  "updated": 1793740255,
   "posts": [
+    {
+      "id": "8227466685:28",
+      "chat_id": 8227466685,
+      "message_id": 28,
+      "date": 1793740210,
+      "edited": null,
+      "from": "Elias",
+      "html": "<p>Voting is open until 8 p.m. For poll and ballot drop off locations, visit <a href=\"https://www.sos.ca.gov/elections/polling-place\">https://www.sos.ca.gov/elections/polling-place</a></p>",
+      "photos": [],
+      "media_group_id": null
+    },
     {
       "id": "8938523530:25",
       "chat_id": 8938523530,
