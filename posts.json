@@ -1,6 +1,17 @@
 {
-  "updated": 1793650001,
+  "updated": 1793727351,
   "posts": [
+    {
+      "id": "8938523530:20",
+      "chat_id": 8938523530,
+      "message_id": 20,
+      "date": 1793727333,
+      "edited": null,
+      "from": "Chris",
+      "html": "<p>Stay tuned on ChicoSol for the latest election results!<br>- ChicoSol staff</p>",
+      "photos": [],
+      "media_group_id": null
+    },
     {
       "id": "8227466685:14",
       "chat_id": 8227466685,
