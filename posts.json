@@ -1,6 +1,17 @@
 {
-  "updated": 1793748517,
+  "updated": 1793753644,
   "posts": [
+    {
+      "id": "8227466685:31",
+      "chat_id": 8227466685,
+      "message_id": 31,
+      "date": 1793753607,
+      "edited": null,
+      "from": "Elias",
+      "html": "<p>Voters have been waiting over an hour at Bell Memorial Union polling center, as voting line snakes around the building. While polls close at 8 p.m., voters in line by then will still be able to vote.</p>",
+      "photos": [],
+      "media_group_id": null
+    },
     {
       "id": "8227466685:30",
       "chat_id": 8227466685,
