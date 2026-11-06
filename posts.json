@@ -1,6 +1,28 @@
 {
-  "updated": 1793827978,
+  "updated": 1793925377,
   "posts": [
+    {
+      "id": "8938523530:69",
+      "chat_id": 8938523530,
+      "message_id": 69,
+      "date": 1793922970,
+      "edited": null,
+      "from": "Chris",
+      "html": "<p>The clerk-recorder&#x27;s office has released its most recent vote count. Hebert has a 434-vote lead over Reynolds; Winslow has a 921-vote lead over Vincent; and Thomas Petty has a 172-vote lead over van Overbeek.</p>",
+      "photos": [],
+      "media_group_id": null
+    },
+    {
+      "id": "8938523530:68",
+      "chat_id": 8938523530,
+      "message_id": 68,
+      "date": 1793920854,
+      "edited": 1793920880,
+      "from": "Chris",
+      "html": "<p>The new round of counted ballots show progressives’ gap widening as more votes are counted. In District 2, Hebert is ahead in each precinct except for the precinct with the Alternative Site.</p>",
+      "photos": [],
+      "media_group_id": null
+    },
     {
       "id": "8938523530:67",
       "chat_id": 8938523530,
