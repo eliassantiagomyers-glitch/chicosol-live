@@ -1,6 +1,17 @@
 {
-  "updated": 1794353839,
+  "updated": 1794602370,
   "posts": [
+    {
+      "id": "8227466685:74",
+      "chat_id": 8227466685,
+      "message_id": 74,
+      "date": 1794600693,
+      "edited": null,
+      "from": "Elias",
+      "html": "<p>Butte County Clerk-Recorder’s office is expected to release another batch of election results today.</p><p>Many Council candidates expect today&#x27;s release to determine who will represent Districts 2, 4 and 6.</p>",
+      "photos": [],
+      "media_group_id": null
+    },
     {
       "id": "8227466685:73",
       "chat_id": 8227466685,
